@@ -135,4 +135,9 @@ public class Volume extends Geometry implements Comparable {
             return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return minPos.toString().replace("]", "; ") + maxPos.toString().replace("[", "");
+    }
 }

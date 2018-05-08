@@ -1,5 +1,7 @@
 package blatt3.a3;
 
+import java.util.Arrays;
+
 /**
  * Aufgabe 3.3: Point
  */
@@ -124,5 +126,10 @@ public class Point extends Geometry implements Comparable {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(coords);
     }
 }
