@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a3;
 
 /**
  * Aufgabe 3.3: Volume

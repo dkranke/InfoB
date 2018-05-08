@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a1;
 
 /**
  * Class representing a Person.

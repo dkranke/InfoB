@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a2;
 
 /**
  * A Parrot is a kind of bird. They are among the most intelligent birds.

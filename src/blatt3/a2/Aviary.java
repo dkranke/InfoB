@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a2;
 
 /**
  * A Class, showing the different abilities of birds in the aviary
