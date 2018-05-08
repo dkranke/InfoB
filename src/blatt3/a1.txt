@@ -1,0 +1,3 @@
+Student:
+1. Nutzt im equals keinen hashCode stattdessen werden Vergleiche gemacht. Z52
+2. Im hashCode überlagern sich matnr und strhash. matnr >> strlen. Z65

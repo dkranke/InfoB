@@ -1,0 +1,16 @@
+1: ((Bird)dodo).ability           : Fly <<- Aufruf von Bird.ability (Attribut)
+2: dodo.ability                   : Run	<<- Aufruf von Dodo.ability (Attribut)
+3: dodo.getAbility()              : Fly	<<- Aufruf von Dodo.getAbility(), interner Aufruf von der Superklasse (Bird.getAbility())
+4: parrot.allAbilities()          : Fly Talk <<- Aufruf von Parrot.allAbilities(), interner Aufruf von der Superklasse (Bird.allAbilities()) und Subklasse (Parrot.ability)
+5: parrot.ability                 : Talk <<- Aufruf von Parrot.ability (Attribut).
+6: carsten.ability                : Fly <<- Aufruf von Bird.ability (Attribut), weil carsten als Bird deklariert ist. Attribute werden in Java nicht dynamisch gebunden (ausschl. Objektmethoden).
+7: ((Bird)carsten).allAbilities() : Run <<- Aufruf von Dodo.allAbilities(), weil Type Casts helfen nicht, dynamisches Binden zu verhindern! Gleiches gilt für die Deklaration als Bird.
+8: einstein.allAbilities()        : Fly Talk <-- Aufruf von Parrot.allAbilities(), weil parrot zuvor als Parrot deklariert wurde und einstein das gleiche Objekt referenziert (Speicheradresse)
+9: einstein.getAbility()          : Fly <<- Aufruf von Bird.getAbility(), weil die Methode in Parrot nicht deklariert ist, wird die Methode der Superklasse verwendet.
+10: ((Parrot)einstein).ability    : Talk <<- Aufruf von Parrot.ability (Attribut), weil parrot zuvor als Parrot deklariert wurde und einstein das gleiche Objekt referenziert (Speicheradresse)
+
+11: dodo = (Dodo)(Bird)parrot;    : Der Cast scheitert an der Stelle: Man kann keine Superklasse mit dem Typen der Subklasse initialisieren bzw. casten.
+
+Exception in thread "main" java.lang.ClassCastException: blatt3.a2.Parrot cannot be cast to blatt3.a2.Dodo
+	at blatt3.a2.Aviary.main(Aviary.java:30)
+	
