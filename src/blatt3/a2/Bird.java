@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a2;
 
 /**
  * A Bird is an animal that can fly.

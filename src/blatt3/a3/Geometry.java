@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a3;
 
 public abstract class Geometry {
     private int dimension;

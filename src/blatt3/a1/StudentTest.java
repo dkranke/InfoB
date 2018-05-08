@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a1;
 
 public class StudentTest {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package blatt3;
+package blatt3.a2;
 
 /**
  * A Dodo is a flightless bird from Mauritius who died out in 1690.
