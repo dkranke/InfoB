@@ -2,39 +2,58 @@ package blatt3.a1;
 
 public class StudentTest {
     public static void main(String[] args) {
-        boolean total = true;
+        Person p1 = new Person("P1");
+        Person p2 = new Person("P2");
+        Person pLike1 = new Person("P1");
 
-        Person p1 = new Person("Test P1");
-        Person p2 = new Person("Test P2");
-        Student s1 = new Student("Test S1", 101);
-        Student s2 = new Student("Test S2", 100);
+        Student s1 = new Student("S1", 101);
+        Student s2 = new Student("S2", 102);
+        Student sLike1 = new Student("S1", 101);
+        Student sLikeP1 = new Student("P1", 103);
 
-        System.out.println("Konstruktor Test");
-        total &= test(p1.getName(), "Test P1");
-        total &= test(p2.getName(), "Test P2");
-        total &= test(s1.getName(), "Test S1");
-        total &= test(s2.getName(), "Test S2");
+        //Person
+        assertEqual(p1, p1);
+        assertUnequal(p1, p2);
+        assertEqual(p1, pLike1);
 
-        System.out.println("Equals Test");
-        total &= test(p1, p1);
-        total &= test(p1, p2);
-        total &= !test(p1, "Test P1");
-        total &= test(s1, s1);
-        total &= test(s1, s2);
+        //Student
+        assertEqual(s1, s1);
+        assertUnequal(s1, s2);
+        assertEqual(s1, sLike1);
 
-        System.out.println("HashCode Test");
-        total &= test(p1.hashCode(), p1.hashCode());
-        total &= test(p1.hashCode(), p2.hashCode());
-        total &= !test(p1.hashCode(), "Test P1");
-        total &= test(s1.hashCode(), s1.hashCode());
-        total &= test(s1.hashCode(), s2.hashCode());
-
-        System.out.println("Total: " + total);
+        //Person + Student
+        assertUnequal(p1, sLikeP1);
     }
 
-    public static boolean test(Object a, Object b) {
+    private static void assertEqual(Person a, Person b) {
+        boolean equal = equalsTest(a, b);
+        boolean hashEqual = hashComparison(a, b);
+        if (equal && hashEqual) {
+            System.out.println("Test OK\n");
+        } else {
+            System.out.println("Test FAILED\n");
+        }
+    }
+
+    private static void assertUnequal(Person a, Person b) {
+        boolean equal = equalsTest(a, b);
+        boolean hashEqual = hashComparison(a, b);
+        if (!(equal || hashEqual)) {
+            System.out.println("Test OK\n");
+        } else {
+            System.out.println("Test FAILED\n");
+        }
+    }
+
+    private static boolean equalsTest(Person a, Person b) {
         boolean equal = a.equals(b);
-        System.out.println(a + " == " + b + " ? " + equal);
+        System.out.println("Is " + a.getName() + " = " + b.getName() + "? " + equal);
+        return equal;
+    }
+
+    private static boolean hashComparison(Person a, Person b) {
+        boolean equal = a.hashCode() == b.hashCode();
+        System.out.println("Is " + a.hashCode() + " = " + b.hashCode() + "? " + equal);
         return equal;
     }
 }
