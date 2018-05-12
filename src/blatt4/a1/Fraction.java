@@ -120,16 +120,16 @@ public class Fraction extends Number {
 
     @Override
     public long longValue() {
-        return numerator / denominator;
+        return numerator / ((long) denominator);
     }
 
     @Override
     public float floatValue() {
-        return numerator / denominator;
+        return numerator / ((float) denominator);
     }
 
     @Override
     public double doubleValue() {
-        return numerator / denominator;
+        return numerator / ((double) denominator);
     }
 }

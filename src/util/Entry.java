@@ -23,5 +23,4 @@ class Entry {
         this.o = o;
         this.next = e;
     }
-
 }

@@ -15,7 +15,7 @@ public class Calculator {
         }
 
         try {
-            // Versuche die Brüche zu parsen, sonst gebe eine Fehlermeldung aus
+            // Versuche die Zahlen zu parsen, sonst gebe eine Fehlermeldung aus
             Number first = parseNumber(args[0]);
             Number second = parseNumber(args[2]);
             Number result;
@@ -30,11 +30,17 @@ public class Calculator {
             if (result != null) {
                 System.out.println(result);
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("Usage: java Calculator <fraction> <operator> <fraction>");
         }
     }
 
+    /**
+     * Converts a string into a Number
+     *
+     * @param str number string
+     * @return a Number
+     */
     public static Number parseNumber(String str) {
         Number num = Fraction.parseFraction(str);
         if (num == null) {
@@ -43,7 +49,15 @@ public class Calculator {
         return num;
     }
 
-    public static Number calc(Fraction first, char operator, Fraction second) {
+    /**
+     * Applies a primitive mathematic function to two fractions
+     *
+     * @param first    First fraction
+     * @param operator Primitive operator
+     * @param second   Second fraction
+     * @return result
+     */
+    public static Fraction calc(Fraction first, char operator, Fraction second) {
         // Versuche einen Operator anzuwenden, sonst gebe eine Fehlermeldung aus
         switch (operator) {
             case '+':
@@ -60,7 +74,15 @@ public class Calculator {
         }
     }
 
-    public static Number calc(Number first, char operator, Number second) {
+    /**
+     * Applies a primitive mathematic function to two fractions
+     *
+     * @param first    First fraction
+     * @param operator Primitive operator
+     * @param second   Second fraction
+     * @return result
+     */
+    public static Double calc(Number first, char operator, Number second) {
         // Versuche einen Operator anzuwenden, sonst gebe eine Fehlermeldung aus
         double v1 = first.doubleValue();
         double v2 = second.doubleValue();

@@ -25,11 +25,13 @@ public class Library {
      */
     public void addItem(LibraryItem item) {
         // Anti Duplikate
-        inventory.reset();
-        while (!inventory.endpos()) {
-            inventory.advance();
-            if (item.equals(inventory.elem())) {
-                return;
+        if (!inventory.empty()) {
+            inventory.reset();
+            while (!inventory.endpos()) {
+                if (item.equals(inventory.elem())) {
+                    return;
+                }
+                inventory.advance();
             }
         }
 
@@ -48,11 +50,13 @@ public class Library {
 
         inventory.reset();
         while (!inventory.endpos()) {
-            inventory.advance();
             if (item.equals(inventory.elem())) {
                 inventory.delete();
                 // Mit Duplikaten
                 //return;
+            }
+            if (!inventory.empty()) {
+                inventory.advance();
             }
         }
     }
@@ -66,16 +70,17 @@ public class Library {
     public List search(String text) {
         List result = new List();
 
-        if (inventory.empty())
+        if (inventory.empty()) {
             return result;
+        }
 
         inventory.reset();
         while (!inventory.endpos()) {
-            inventory.advance();
             LibraryItem item = (LibraryItem) inventory.elem();
             if (item.getDescription().contains(text)) {
                 result.add(item);
             }
+            inventory.advance();
         }
 
         return result;
