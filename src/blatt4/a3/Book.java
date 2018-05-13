@@ -45,6 +45,6 @@ public class Book extends LibraryItem {
      */
     @Override
     public String getDescription() {
-        return title + " by " + author;
+        return title + " by " + author + (isBorrowed() ? " (Borrowed)" : "");
     }
 }

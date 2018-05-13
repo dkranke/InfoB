@@ -45,6 +45,6 @@ public class BluRay extends LibraryItem {
      */
     @Override
     public String getDescription() {
-        return title + " by " + director;
+        return title + " by " + director + (isBorrowed() ? " (Borrowed)" : "");
     }
 }

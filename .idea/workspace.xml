@@ -6,17 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8d594f2-beea-41b6-9681-425f16293207" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Calculator_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/TestOutput.java" afterDir="false" />
+    <list default="true" id="d8d594f2-beea-41b6-9681-425f16293207" name="Default" comment="Fix blatt4.a3">
+      <change afterPath="$PROJECT_DIR$/src/blatt4/a2/diagram.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blatt4/a2/diagram.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blatt4/a2/diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blatt4/a2/source.yuml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blatt4/a1/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a1/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blatt4/a1/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a1/Fraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blatt4/a3/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a3/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Entry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blatt4/a3/BluRay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a3/BluRay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blatt4/a3/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a3/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,23 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LibraryTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LibraryTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Library.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Library.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+            <state relative-caret-position="40">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -103,8 +89,10 @@
         <option value="$PROJECT_DIR$/src/blatt4/a3/LibraryItem.java" />
         <option value="$PROJECT_DIR$/src/util/Entry.java" />
         <option value="$PROJECT_DIR$/src/util/List.java" />
-        <option value="$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java" />
         <option value="$PROJECT_DIR$/src/blatt4/a3/Library.java" />
+        <option value="$PROJECT_DIR$/src/blatt4/a3/Book.java" />
+        <option value="$PROJECT_DIR$/src/blatt4/a3/BluRay.java" />
+        <option value="$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java" />
       </list>
     </option>
   </component>
@@ -123,14 +111,17 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,6 +184,13 @@
               <item name="InfoB" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="blatt4" type="462c0819:PsiDirectoryNode" />
+              <item name="a2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InfoB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InfoB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="blatt4" type="462c0819:PsiDirectoryNode" />
               <item name="a3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -221,6 +219,7 @@
       <recent name="util" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Domenik\IdeaProjects\InfoB\src\blatt4\a2" />
       <recent name="C:\Users\Vik\IdeaProjects\InfoB\src\blatt3\a2" />
       <recent name="C:\Users\Vik\IdeaProjects\InfoB\src\blatt3\a1" />
       <recent name="C:\Users\Domenik\IdeaProjects\InfoB\src\blatt3" />
@@ -329,7 +328,8 @@
       <workItem from="1525817813075" duration="538000" />
       <workItem from="1526041085896" duration="1624000" />
       <workItem from="1526043883131" duration="8480000" />
-      <workItem from="1526128008047" duration="5149000" />
+      <workItem from="1526128008047" duration="5670000" />
+      <workItem from="1526236723758" duration="207000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1525818253728</created>
@@ -345,11 +345,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526041590339</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix blatt4.a3">
+      <created>1526133384912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1526133384912</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16447000" />
+    <option name="totallyTimeSpent" value="17175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -357,7 +364,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32946146" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -365,11 +371,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" weight="0.3030623" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3273495" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3273495" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="3" />
       <window_info anchor="right" id="Designer" order="6" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16614583" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16614583" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -383,6 +389,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296582" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32946146" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +428,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="First commit" />
     <MESSAGE value="Update blatt4.a1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update blatt4.a1" />
+    <MESSAGE value="Fix blatt4.a3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix blatt4.a3" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -434,11 +442,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Library.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1580">
+          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -453,10 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#2952#2953#0" expanded="true" />
-            <element signature="e#2995#2996#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -681,20 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-          <folding>
-            <element signature="e#88#89#0" expanded="true" />
-            <element signature="e#115#116#0" expanded="true" />
-            <element signature="e#111#112#0" expanded="true" />
-            <element signature="e#136#137#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#370#371#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -723,29 +735,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/IterList.java" />
-    <entry file="file://$PROJECT_DIR$/src/util/Iterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="27" />
-          <folding>
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Iterator.java" />
     <entry file="file://$PROJECT_DIR$/src/util/Entry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -767,20 +758,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java">
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/BluRay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        <state relative-caret-position="856">
+          <caret line="47" column="78" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#899#900#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="47" column="76" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="76" />
+          <folding>
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blatt4/a3/Library.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+        <state relative-caret-position="596">
+          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt4/a3/LibraryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,6 @@
+[Soziales Netzwerk|nutzer : Liste;foren : Liste]1++-*[Benutzer|name : String; freunde : Benutzer;nachrichten : Liste]
+[Benutzer]^-[Administrator|foren : Liste]
+[Soziales Netzwerk]1++-*[Forum|admin : Administrator;nachrichten : Liste]
+[Administrator]1<-.-*[Forum]
+[Benutzer]1..*<>-*[Nachricht|absender : Benutzer;inhalt : Object]
+[Forum]1<>-*[Nachricht]
