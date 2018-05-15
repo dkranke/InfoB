@@ -23,6 +23,16 @@ public interface TestOutput {
     }
 
     default String stringFailed(int errorCode) {
-        return "Failed(" + (errorCode < 4 ? "Equal" : "Hash") + ")";
+        if (errorCode == 0) {
+            return "Failed";
+        } else if (errorCode < Test.ERR_EQUAL_HASH) {
+            return "Failed(Equals)";
+        } else if (errorCode < Test.ERR_EQUAL_STRING) {
+            return "Failed(Hash)";
+        } else if (errorCode < 64) {
+            return "Failed(String)";
+        } else {
+            return "Failed(Unknown)";
+        }
     }
 }

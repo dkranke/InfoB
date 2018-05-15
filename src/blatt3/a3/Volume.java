@@ -1,5 +1,7 @@
 package blatt3.a3;
 
+import java.util.Arrays;
+
 /**
  * Aufgabe 3.3: Volume
  */
@@ -138,6 +140,6 @@ public class Volume extends Geometry implements Comparable {
 
     @Override
     public String toString() {
-        return minPos.toString().replace("]", "; ") + maxPos.toString().replace("[", "");
+        return this.getClass().getSimpleName() + Arrays.toString(minPos.getCoords()).replace("]", "; ") + Arrays.toString(maxPos.getCoords()).replace("[", "");
     }
 }

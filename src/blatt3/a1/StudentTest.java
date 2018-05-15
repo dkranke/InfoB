@@ -1,5 +1,8 @@
 package blatt3.a1;
 
+import util.Test;
+import util.TestOutput;
+
 public class StudentTest {
     public static void main(String[] args) {
         Person p1 = new Person("P1");
@@ -11,49 +14,36 @@ public class StudentTest {
         Student sLike1 = new Student("S1", 101);
         Student sLikeP1 = new Student("P1", 103);
 
+        Test test = new Test(new TestOutput() {
+            @Override
+            public String toString(Object o) {
+                if (o instanceof Student) {
+                    Student s = (Student) o;
+                    return String.format("Student(Name: %s, MatNr: %d)", s.getName(), s.getMatNr());
+                } else if (o instanceof Person) {
+                    return String.format("Person(Name: %s)", ((Person) o).getName());
+                } else {
+                    return TestOutput.super.toString(o);
+                }
+            }
+        });
+
         //Person
-        assertEqual(p1, p1);
-        assertUnequal(p1, p2);
-        assertEqual(p1, pLike1);
+        test.assertEquals(p1, p1);
+        test.assertUnequals(p1, p2);
+        test.assertEquals(p1, pLike1);
+        System.out.println();
 
         //Student
-        assertEqual(s1, s1);
-        assertUnequal(s1, s2);
-        assertEqual(s1, sLike1);
+        test.assertEquals(s1, s1);
+        test.assertUnequals(s1, s2);
+        test.assertEquals(s1, sLike1);
+        System.out.println();
 
         //Person + Student
-        assertUnequal(p1, sLikeP1);
-    }
+        test.assertUnequals(p1, sLikeP1);
+        System.out.println();
 
-    private static void assertEqual(Person a, Person b) {
-        boolean equal = equalsTest(a, b);
-        boolean hashEqual = hashComparison(a, b);
-        if (equal && hashEqual) {
-            System.out.println("Test OK\n");
-        } else {
-            System.out.println("Test FAILED\n");
-        }
-    }
-
-    private static void assertUnequal(Person a, Person b) {
-        boolean equal = equalsTest(a, b);
-        boolean hashEqual = hashComparison(a, b);
-        if (!(equal || hashEqual)) {
-            System.out.println("Test OK\n");
-        } else {
-            System.out.println("Test FAILED\n");
-        }
-    }
-
-    private static boolean equalsTest(Person a, Person b) {
-        boolean equal = a.equals(b);
-        System.out.println("Is " + a.getName() + " = " + b.getName() + "? " + equal);
-        return equal;
-    }
-
-    private static boolean hashComparison(Person a, Person b) {
-        boolean equal = a.hashCode() == b.hashCode();
-        System.out.println("Is " + a.hashCode() + " = " + b.hashCode() + "? " + equal);
-        return equal;
+        test.printTotal();
     }
 }

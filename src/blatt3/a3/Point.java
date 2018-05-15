@@ -130,6 +130,6 @@ public class Point extends Geometry implements Comparable {
 
     @Override
     public String toString() {
-        return Arrays.toString(coords);
+        return this.getClass().getSimpleName() + Arrays.toString(coords);
     }
 }
