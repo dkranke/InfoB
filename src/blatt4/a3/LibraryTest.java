@@ -16,12 +16,14 @@ public class LibraryTest {
         lib.addItem(bluRay);
         lib.addItem(book);
         System.out.println(" - After: " + listLib(lib.search("")));
+        System.out.println();
 
         System.out.println("Search");
         System.out.println(" - Book: " + listLib(lib.search("Book")));
         System.out.println(" - Ray: " + listLib(lib.search("Ray")));
         System.out.println(" - \"\": " + listLib(lib.search("")));
         System.out.println(" - Item: " + listLib(lib.search("item")));
+        System.out.println();
 
         System.out.println("Remove");
         System.out.println(" - Before: " + listLib(lib.search("")));
