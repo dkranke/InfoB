@@ -13,7 +13,7 @@ public class TickerTest {
             //Ask user what to do
             do {
                 System.out.println("Enter...\n" +
-                        "1: create/remove a Company\n" +
+                        "1: create/delete a Company\n" +
                         "2: change stock price\n" +
                         "3: call GC\n" +
                         "4: end");

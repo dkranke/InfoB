@@ -10,7 +10,7 @@ public class Test {
     public static final int ERR_UNEQUAL_STRING = 32;
 
     public static final Test STATIC = new Test();
-    public boolean total;
+    private boolean total, labeler;
     private TestOutput to;
 
     public Test() {
@@ -41,6 +41,9 @@ public class Test {
     }
 
     public void printTotal() {
+        if (labeler) {
+            System.out.println();
+        }
         System.out.println("Total: " + (total ? to.stringPassed() : to.stringFailed(0)));
     }
 
@@ -58,12 +61,12 @@ public class Test {
 
         if (to.enableOutput()) {
             if (equal && hash) {
-                System.out.printf(to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringPassed());
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringPassed());
             } else {
                 int error = 0;
                 error += equal ? 0 : ERR_UNEQUAL_OBJECT;
                 error += hash ? 0 : ERR_UNEQUAL_HASH;
-                System.out.printf(to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringFailed(error));
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringFailed(error));
             }
         }
 
@@ -77,12 +80,12 @@ public class Test {
 
         if (to.enableOutput()) {
             if (!(equal && hash)) {
-                System.out.printf(to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringPassed());
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringPassed());
             } else {
                 int error = 0;
                 error += equal ? ERR_EQUAL_OBJECT : 0;
                 error += hash ? ERR_EQUAL_HASH : 0;
-                System.out.printf(to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringFailed(error));
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringFailed(error));
             }
         }
 
@@ -95,11 +98,11 @@ public class Test {
 
         if (to.enableOutput()) {
             if (equal) {
-                System.out.printf(to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringPassed());
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "==", to.toString(b), to.stringPassed());
             } else {
                 int error = 0;
                 error += equal ? 0 : ERR_UNEQUAL_STRING;
-                System.out.printf(to.stringFormat(), to.toString(a), "==", to.toString(b), to.stringFailed(error));
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "==", to.toString(b), to.stringFailed(error));
             }
         }
 
@@ -107,21 +110,31 @@ public class Test {
         return equal;
     }
 
-    public boolean stringUnequals(Object a, Object b) {
+    public boolean stringUnequals(Object a, String b) {
         boolean equal = a.toString().equals(b);
 
         if (to.enableOutput()) {
             if (!equal) {
-                System.out.printf(to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringPassed());
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "!=", to.toString(b), to.stringPassed());
             } else {
                 int error = 0;
                 error += equal ? ERR_EQUAL_STRING : 0;
-                System.out.printf(to.stringFormat(), to.toString(a), "!=", to.toString(b), to.stringFailed(error));
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "!=", to.toString(b), to.stringFailed(error));
             }
         }
 
         total &= !equal;
         return !equal;
+    }
+
+    public void label(String label) {
+        if (labeler) {
+            System.out.println();
+        } else {
+            labeler = true;
+        }
+
+        System.out.printf(to.labelFormat(), label);
     }
 
     public String toString(Object o) {

@@ -7,7 +7,11 @@ public interface TestOutput {
     }
 
     default String toString(Object o) {
-        return o.toString();
+        if (o instanceof String) {
+            return "\"" + o.toString() + "\"";
+        } else {
+            return o.toString();
+        }
     }
 
     default String toHash(Object o) {
@@ -34,5 +38,13 @@ public interface TestOutput {
         } else {
             return "Failed(Unknown)";
         }
+    }
+
+    default String labelFormat() {
+        return "%s%n";
+    }
+
+    default String labelStringFormat() {
+        return " - " + stringFormat();
     }
 }
