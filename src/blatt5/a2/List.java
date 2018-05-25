@@ -77,8 +77,6 @@ public class List<T> implements Cloneable {
         return current.getValue();
     }
 
-    // TODO Fix previous
-
     /**
      * Füge ein Element zur Liste hinzu
      * @param element neues Element
@@ -120,6 +118,7 @@ public class List<T> implements Cloneable {
         delete();
     }
 
+    // TODO Fix current
     /**
      * Entferne ein Element aus der Liste
      * @param element zu löschendes Element
@@ -127,6 +126,10 @@ public class List<T> implements Cloneable {
     public void remove(T element) {
         if (empty()) {
             return;
+        } else if (element == current) {
+            Entry<T> cur = current;
+            delete();
+            current = current.getPrevious();
         } else {
             Entry<T> cur = current;
             reset();
@@ -163,7 +166,7 @@ public class List<T> implements Cloneable {
     @Override
     public String toString() {
         if (empty()) {
-            return this.getClass().getSimpleName() + "[]";
+            return this.getClass().getSimpleName() + "{}";
         } else {
             Entry<T> cur = current;
             String text = "";
@@ -179,7 +182,7 @@ public class List<T> implements Cloneable {
                 }
             }
             current = cur;
-            return this.getClass().getSimpleName() + String.format("[%s]", text.substring(2));
+            return this.getClass().getSimpleName() + String.format("{%s}", text.substring(2));
         }
     }
 
@@ -199,11 +202,8 @@ public class List<T> implements Cloneable {
 
     public void delete() {
         if (current != null) {
-            System.out.print(current.getPrevious() + " ");
-            System.out.print(current + " ");
-            System.out.println(current.getNext());
             if (current == begin) {
-                begin = current.getNext();
+                begin = current.getPrevious();
             }
             if (current.getPrevious() != null) {
                 if (current.getNext() != null) {

@@ -8,7 +8,8 @@ public class ListTest {
         String[] set = {"A", "B", "C", "D", "E"};
         Test test = new Test();
 
-        List<String> list1 = new List<String>(), list2 = list1.clone();
+        List<String> list1 = new List<String>(), list2;
+        list2 = list1.clone();
 
         test.label("Konstruktor");
         test.assertUnequals(list1, list2);

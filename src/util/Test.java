@@ -1,5 +1,7 @@
 package util;
 
+import java.util.function.Consumer;
+
 public class Test {
 
     public static final int ERR_EQUAL_OBJECT = 1;
@@ -125,6 +127,82 @@ public class Test {
 
         total &= !equal;
         return !equal;
+    }
+
+    public long speedTestMs(Runnable test) {
+        long time = -System.currentTimeMillis();
+        test.run();
+        time += System.currentTimeMillis();
+        return time;
+    }
+
+    public double speedTestMs(Runnable test, int count) {
+        double average = 0;
+        for (int i = 0; i < count; i++) {
+            average += speedTestMs(test);
+        }
+        average /= (double) count;
+        return average;
+    }
+
+    public long speedTestNs(Runnable test) {
+        long time = -System.nanoTime();
+        test.run();
+        time += System.nanoTime();
+        return time;
+    }
+
+    public double speedTestNs(Runnable test, int count) {
+        double average = 0;
+        for (int i = 0; i < count; i++) {
+            average += speedTestNs(test);
+        }
+        average /= (double) count;
+        return average;
+    }
+
+    public double compareSpeedMs(Runnable test1, Runnable test2) {
+        return speedTestMs(test1) - speedTestMs(test2);
+    }
+
+    public double compareSpeedNs(Runnable test1, Runnable test2) {
+        return speedTestNs(test1) - speedTestNs(test2);
+    }
+
+    public double compareSpeedMs(Runnable test1, Runnable test2, int count) {
+        return speedTestMs(test1, count) - speedTestMs(test2, count);
+    }
+
+    public double compareSpeedNs(Runnable test1, Runnable test2, int count) {
+        return speedTestNs(test1, count) - speedTestNs(test2, count);
+    }
+
+    public <T> double compareSpeedMs(T parameter, Consumer<T> test1, Consumer<T> test2) {
+        Runnable run1 = () -> test1.accept(parameter);
+        Runnable run2 = () -> test2.accept(parameter);
+        return speedTestMs(run1) - speedTestMs(run2);
+    }
+
+    public <T> double compareSpeedNs(T parameter, Consumer<T> test1, Consumer<T> test2) {
+        Runnable run1 = () -> test1.accept(parameter);
+        Runnable run2 = () -> test2.accept(parameter);
+        return speedTestNs(run1) - speedTestNs(run2);
+    }
+
+    public <T> double compareListSpeedMs(T[] parameters, Consumer<T> test1, Consumer<T> test2) {
+        double total = 0;
+        for (T parameter : parameters) {
+            total += compareSpeedMs(parameter, test1, test2);
+        }
+        return total;
+    }
+
+    public <T> double compareListSpeedNs(T[] parameters, Consumer<T> test1, Consumer<T> test2) {
+        double total = 0;
+        for (T parameter : parameters) {
+            total += compareSpeedNs(parameter, test1, test2);
+        }
+        return total;
     }
 
     public void label(String label) {

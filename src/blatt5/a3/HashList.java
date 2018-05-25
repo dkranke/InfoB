@@ -6,7 +6,7 @@ import util.HashSet;
 
 import java.security.InvalidParameterException;
 
-public class HashMap<T> implements HashSet<T> {
+public class HashList<T> implements HashSet<T> {
 
     private static final HashFunction DEFAULT_HF = new HashFunction() {
         @Override
@@ -23,11 +23,11 @@ public class HashMap<T> implements HashSet<T> {
     private List<T>[] map;
     private HashFunction hf;
 
-    public HashMap(int count) {
+    public HashList(int count) {
         this(count, DEFAULT_HF);
     }
 
-    public HashMap(int count, HashFunction hf) {
+    public HashList(int count, HashFunction hf) {
         if (count <= 0) {
             throw new InternalError(new InvalidParameterException("Count must be greater than 0."));
         }
@@ -56,12 +56,30 @@ public class HashMap<T> implements HashSet<T> {
         } else {
             entry.reset();
             while (entry.hasNext()) {
-                if (o.equals(entry.next())) {
+                if (hf.equals(o, entry.next())) {
                     return true;
                 }
             }
             return false;
         }
+    }
+
+    public boolean containsAny(T... elements) {
+        for (T element : elements) {
+            if (contains(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsAll(T... elements) {
+        for (T element : elements) {
+            if (!contains(element)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -71,6 +89,12 @@ public class HashMap<T> implements HashSet<T> {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void insert(T... elements) {
+        for (T element : elements) {
+            insert(element);
         }
     }
 
@@ -84,9 +108,19 @@ public class HashMap<T> implements HashSet<T> {
         }
     }
 
+    public void delete(T... elements) {
+        for (T element : elements) {
+            delete(element);
+        }
+    }
+
     // TODO
     @Override
     public String toString() {
-        return "TODO: HashMap.toString";
+        String list = "";
+        for (int i = 0; i < map.length; i++) {
+            list += ", " + i + ": " + map[i];
+        }
+        return this.getClass().getSimpleName() + String.format("{%s}", list.substring(2));
     }
 }

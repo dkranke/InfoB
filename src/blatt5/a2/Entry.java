@@ -18,6 +18,7 @@ public class Entry<T> implements Cloneable {
      * @param next     nächster Eintrag
      */
     public Entry(Entry<T> previous, T value, Entry<T> next) {
+        this.previous = previous;
         this.value = value;
         this.next = next;
     }
