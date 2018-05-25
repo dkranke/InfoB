@@ -1,3 +1,5 @@
+package blatt1.a2;
+
 /*
  * Aufgabe 1.2: Fraction
  */

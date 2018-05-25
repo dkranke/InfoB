@@ -1,3 +1,5 @@
+package blatt1.a4;
+
 public class Company {
     private String name;
     private double stockPrice;

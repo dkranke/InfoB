@@ -1,3 +1,5 @@
+package blatt1.a4;
+
 public class Ticker {
     private static Ticker ticker;
     private String message = "";

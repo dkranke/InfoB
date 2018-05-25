@@ -1,3 +1,5 @@
+package blatt1.a3;
+
 public class StackTest {
     public static void main(String[] args) {
         //Creating stack and copy

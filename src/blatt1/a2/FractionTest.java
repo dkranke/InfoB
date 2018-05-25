@@ -1,3 +1,5 @@
+package blatt1.a2;
+
 /*
  * Klasse zum Testen der Fraction-Klasse.
  * Tests bestehen aus einer Ausgabe eines Vergleiches und dessen Evaluierung

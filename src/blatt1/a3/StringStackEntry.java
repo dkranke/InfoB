@@ -1,3 +1,5 @@
+package blatt1.a3;
+
 /**
  * Represents an entry of a <code>StringStack</code> which holds a String and a
  * reference to the next StringStackEntry.

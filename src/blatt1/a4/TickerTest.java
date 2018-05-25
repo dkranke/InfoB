@@ -1,7 +1,8 @@
+package blatt1.a4;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 
 public class TickerTest {
     private static Scanner scanner = new Scanner(System.in);
