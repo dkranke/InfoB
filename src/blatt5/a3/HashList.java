@@ -167,6 +167,6 @@ public class HashList<T> implements HashSet<T> {
         for (int i = 0; i < map.length; i++) {
             list += ", " + i + ": " + map[i];
         }
-        return this.getClass().getSimpleName() + String.format("{%s}", list.substring(2));
+        return this.getClass().getSimpleName() + '{' + list.substring(2) + '}';
     }
 }
