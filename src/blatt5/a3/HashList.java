@@ -8,6 +8,9 @@ import java.security.InvalidParameterException;
 
 public class HashList<T> implements HashSet<T> {
 
+    /**
+     * Standard HashFunction-Methoden
+     */
     private static final HashFunction DEFAULT_HF = new HashFunction() {
         @Override
         public boolean equals(Object o1, Object o2) {
@@ -21,15 +24,28 @@ public class HashList<T> implements HashSet<T> {
     };
 
     private List<T>[] map;
-    private HashFunction hf;
+    private HashFunction<T> hf;
 
+    /**
+     * Konstruktor für den Pflichtparameter
+     *
+     * @param count Anzahl der Elemente
+     */
     public HashList(int count) {
-        this(count, DEFAULT_HF);
+        this(count, null);
     }
 
-    public HashList(int count, HashFunction hf) {
+    /**
+     * Konkstruktor mit Optionaler Hashfunction
+     *
+     * @param count Anzahl der Elemente
+     * @param hf    optionale HashFunction
+     */
+    public HashList(int count, HashFunction<T> hf) {
         if (count <= 0) {
             throw new InternalError(new InvalidParameterException("Count must be greater than 0."));
+        } else if (hf == null) {
+            hf = DEFAULT_HF;
         }
 
         map = new List[count];
@@ -44,6 +60,10 @@ public class HashList<T> implements HashSet<T> {
         }
     }
 
+    /**
+     * @param o the object that may be contained in this <code>HashSet</code>.
+     * @return
+     */
     @Override
     public boolean contains(T o) {
         if (map.length == 0) {
@@ -51,7 +71,7 @@ public class HashList<T> implements HashSet<T> {
         }
 
         List<T> entry = map[hf.hashCode(o) % map.length];
-        if (entry.count() == 0) {
+        if (entry.empty()) {
             return false;
         } else {
             entry.reset();
@@ -64,6 +84,11 @@ public class HashList<T> implements HashSet<T> {
         }
     }
 
+    /**
+     * Prüft ob mindestens eins von mehreren Elementen in der Liste vorhanden ist
+     * @param elements Liste von Elementen
+     * @return Ergebnis
+     */
     public boolean containsAny(T... elements) {
         for (T element : elements) {
             if (contains(element)) {
@@ -73,6 +98,11 @@ public class HashList<T> implements HashSet<T> {
         return false;
     }
 
+    /**
+     * Prüft ob alle Elemente in der Liste vorhanden sind
+     * @param elements Liste von Elementen
+     * @return Ergebnis
+     */
     public boolean containsAll(T... elements) {
         for (T element : elements) {
             if (!contains(element)) {
@@ -82,6 +112,11 @@ public class HashList<T> implements HashSet<T> {
         return true;
     }
 
+    /**
+     * @param o inserts the given object into this <code>HashSet</code> if it is
+     *          not already contained
+     * @return
+     */
     @Override
     public boolean insert(T o) {
         if (!contains(o)) {
@@ -92,12 +127,20 @@ public class HashList<T> implements HashSet<T> {
         }
     }
 
+    /**
+     * Fügt eine Liste von Elementen der HashList hinzu
+     * @param elements Liste von Elementen
+     */
     public void insert(T... elements) {
         for (T element : elements) {
             insert(element);
         }
     }
 
+    /**
+     * @param o deletes the given object from this <code>HashSet</code> if it is contained
+     * @return
+     */
     @Override
     public boolean delete(T o) {
         if (contains(o)) {
@@ -108,13 +151,16 @@ public class HashList<T> implements HashSet<T> {
         }
     }
 
+    /**
+     * Entfernt eine Liste von Elementen aus der HashList
+     * @param elements Liste von Elementen
+     */
     public void delete(T... elements) {
         for (T element : elements) {
             delete(element);
         }
     }
 
-    // TODO
     @Override
     public String toString() {
         String list = "";
