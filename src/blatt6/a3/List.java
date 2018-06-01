@@ -1,11 +1,16 @@
-package blatt5.a2;
+package blatt6.a3;
+
+import blatt5.a2.Entry;
+
+import java.util.Iterator;
 
 /**
  * Klonbare (shallow-copy) typensichere Liste mit Iterator-Support :-)
  * Endlich eine (fast) normale Liste.
+ *
  * @param <T> Datentyp
  */
-public class List<T> implements Cloneable {
+public class List<T> implements Cloneable, Iterable<T> {
 
     private int count = 0;
     private Entry<T> begin, current;
@@ -28,6 +33,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Prüft ob die Liste leer ist
+     *
      * @return Ergebins
      */
     public boolean empty() {
@@ -45,6 +51,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Prüft ob das Ende der Liste erreicht wurde
+     *
      * @return Ergebnis
      */
     public boolean endpos() {
@@ -71,6 +78,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Gebe das aktuelle Element aus
+     *
      * @return aktuelle Element
      */
     public T elem() {
@@ -79,6 +87,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Füge ein Element zur Liste hinzu
+     *
      * @param element neues Element
      */
     public void add(T element) {
@@ -102,6 +111,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Füge mehrere Elemente zur Liste hinzu
+     *
      * @param elements neue Elemente
      */
     public void add(T... elements) {
@@ -120,6 +130,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Entferne ein Element aus der Liste
+     *
      * @param element zu löschendes Element
      */
     public void remove(T element) {
@@ -145,6 +156,7 @@ public class List<T> implements Cloneable {
 
     /**
      * Entferne mehrere Elemente aus der Liste
+     *
      * @param elements zu löschende Elemente
      */
     public void remove(T... elements) {
@@ -220,5 +232,10 @@ public class List<T> implements Cloneable {
             }
             count--;
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator<T>(this);
     }
 }
