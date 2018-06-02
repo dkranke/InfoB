@@ -45,17 +45,8 @@ public class Fraction extends Number {
         int numerator = Integer.parseInt(numbers[0]);
         int denominator = Integer.parseInt(numbers[1]);
 
-        // Suche nach bekannten Bruch
         Fraction frac = new Fraction(numerator, denominator);
-        while (known.hasNext()) {
-            Fraction f = known.next();
-            if (frac.equals(f)) {
-                return f;
-            }
-        }
-
-        known.add(frac);
-        return frac;
+        return getKnown(frac);
     }
 
     // Euklidischer Algorithmus
@@ -75,22 +66,40 @@ public class Fraction extends Number {
         return a;
     }
 
+    /**
+     * Suche nach einem bekannten Bruch, oder registriere den neuen
+     *
+     * @param frac Ziel Bruch
+     * @return Bekannter Bruch
+     */
+    private static Fraction getKnown(Fraction frac) {
+        while (known.hasNext()) {
+            Fraction f = known.next();
+            if (frac.equals(f)) {
+                return f;
+            }
+        }
+
+        known.add(frac);
+        return frac;
+    }
+
     public Fraction multiply(int factor) {
-        return new Fraction(numerator * factor, denominator);
+        return getKnown(new Fraction(numerator * factor, denominator));
     }
 
     public Fraction multiply(Fraction factor) {
-        return new Fraction(numerator * factor.numerator, denominator * factor.denominator);
+        return getKnown(new Fraction(numerator * factor.numerator, denominator * factor.denominator));
     }
 
     public Fraction divide(Fraction divisor) {
-        return new Fraction(numerator * divisor.denominator, denominator * divisor.numerator);
+        return getKnown(new Fraction(numerator * divisor.denominator, denominator * divisor.numerator));
     }
 
     public Fraction multiply(Fraction... factors) {
         Fraction value = this.clone();
         for (Fraction factor : factors) {
-            value = value.multiply(factor);
+            value = getKnown(value.multiply(factor));
         }
         return value;
     }
@@ -102,17 +111,7 @@ public class Fraction extends Number {
      * @return The calculated fraction
      */
     public Fraction add(Fraction addend) {
-        return new Fraction(numerator * addend.denominator + denominator * addend.numerator, denominator * addend.denominator);
-    }
-
-    /**
-     * Subtracts a fraction to another
-     *
-     * @param subtrahend Another fraction
-     * @return The calculated fraction
-     */
-    public Fraction substract(Fraction subtrahend) {
-        return new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator);
+        return getKnown(new Fraction(numerator * addend.denominator + denominator * addend.numerator, denominator * addend.denominator));
     }
 
     // Überladung von equals um Objekte vergleichen zu können
@@ -155,5 +154,15 @@ public class Fraction extends Number {
     @Override
     public double doubleValue() {
         return numerator / ((double) denominator);
+    }
+
+    /**
+     * Subtracts a fraction to another
+     *
+     * @param subtrahend Another fraction
+     * @return The calculated fraction
+     */
+    public Fraction substract(Fraction subtrahend) {
+        return getKnown(new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator));
     }
 }

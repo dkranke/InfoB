@@ -7,20 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8d594f2-beea-41b6-9681-425f16293207" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/BluRay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/Library.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/LibraryItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/Sequence.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt5/a1/UseLibrary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt6/a1/UncertainException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt6/a2/Fraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt6/a3/List.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt6/a3/ListIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blatt6/a3/ListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blatt5/a2/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt5/a2/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blatt6/a2/Fraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blatt6/a2/Fraction.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,16 +20,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ListIterator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ListIterator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/blatt6/a3/ListIterator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="240">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fraction.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blatt6/a2/Fraction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="716">
+              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding>
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#354#355#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
+                <element signature="e#172#182#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#1751#1752#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,10 +123,10 @@
         <option value="$PROJECT_DIR$/src/blatt5/a3/HashList.java" />
         <option value="$PROJECT_DIR$/src/blatt6/a1/UncertainException.java" />
         <option value="$PROJECT_DIR$/src/blatt6/a2/Entry.java" />
-        <option value="$PROJECT_DIR$/src/blatt6/a2/Fraction.java" />
         <option value="$PROJECT_DIR$/src/blatt6/a3/List.java" />
         <option value="$PROJECT_DIR$/src/blatt5/a2/List.java" />
         <option value="$PROJECT_DIR$/src/blatt6/a3/ListIterator.java" />
+        <option value="$PROJECT_DIR$/src/blatt6/a2/Fraction.java" />
       </list>
     </option>
   </component>
@@ -157,6 +153,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -211,12 +208,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Problems" />
@@ -406,7 +403,8 @@
       <workItem from="1527458073962" duration="2371000" />
       <workItem from="1527583029744" duration="186000" />
       <workItem from="1527583253256" duration="4487000" />
-      <workItem from="1527888942533" duration="2829000" />
+      <workItem from="1527888942533" duration="2870000" />
+      <workItem from="1527944547504" duration="368000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1525818253728</created>
@@ -492,11 +490,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527463153656</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fix blatt5.a2&#10;Add blatt6">
+      <created>1527892346142</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1527892346142</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82092000" />
+    <option name="totallyTimeSpent" value="82501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -504,7 +509,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32946146" />
       <window_info id="Palette&#9;" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -512,7 +516,7 @@
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49947917" weight="0.3030623" />
-      <window_info anchor="bottom" x="0" y="367" width="1920" height="306" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.32312566" />
+      <window_info anchor="bottom" x="0" y="367" width="1920" height="306" id="Run" order="2" sideWeight="0.49895832" weight="0.32312566" />
       <window_info anchor="bottom" id="Sequence" order="11" weight="0.5181237" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32942432" />
       <window_info id="Capture Tool" order="4" />
@@ -525,6 +529,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39809927" />
       <window_info anchor="bottom" id="Dependency Viewer" order="12" weight="0.32946146" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32946146" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
@@ -612,7 +617,8 @@
     <MESSAGE value="Fix blatt5.a2&#10;Fix blatt5.a3" />
     <MESSAGE value="Fix errors" />
     <MESSAGE value="Finish blatt5.a3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish blatt5.a3" />
+    <MESSAGE value="Fix blatt5.a2&#10;Add blatt6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix blatt5.a2&#10;Add blatt6" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -837,20 +843,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/UseLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="25" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="31" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/BluRay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/UseLibrary.java" />
+    <entry file="file://$USER_HOME$/Desktop/BluRay.java" />
     <entry file="file://$PROJECT_DIR$/src/blatt5/a2/Entry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -876,10 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="17" selection-start-column="17" selection-end-column="17" />
-          <folding>
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,37 +908,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blatt6/a2/Fraction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-          <folding>
-            <element signature="e#172#182#0" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#3442#3443#0" expanded="true" />
-            <element signature="e#3501#3502#0" expanded="true" />
-            <element signature="e#3617#3618#0" expanded="true" />
-            <element signature="e#3669#3670#0" expanded="true" />
-            <element signature="e#3712#3713#0" expanded="true" />
-            <element signature="e#3758#3759#0" expanded="true" />
-            <element signature="e#3803#3804#0" expanded="true" />
-            <element signature="e#3858#3859#0" expanded="true" />
-            <element signature="e#3905#3906#0" expanded="true" />
-            <element signature="e#3961#3962#0" expanded="true" />
-            <element signature="e#4010#4011#0" expanded="true" />
-            <element signature="e#4067#4068#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blatt6/a3/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt6/a3/Entry.java" />
     <entry file="file://$PROJECT_DIR$/src/blatt5/a2/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -977,13 +937,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blatt6/a3/ListIterator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="240">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blatt6/a2/Fraction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#172#182#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1751#1752#0" expanded="true" />
           </folding>
         </state>
       </provider>
