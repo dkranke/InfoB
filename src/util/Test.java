@@ -34,8 +34,18 @@ public class Test {
         total = true;
     }
 
-    public void addTotal(boolean value) {
+    public boolean addTotal(boolean value) {
+        return isTrue(value);
+    }
+
+    public boolean isTrue(boolean value) {
         total &= value;
+        return value;
+    }
+
+    public boolean isFalse(boolean value) {
+        total &= !value;
+        return !value;
     }
 
     public boolean getTotal() {

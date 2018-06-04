@@ -7,7 +7,7 @@ import blatt5.a2.List;
  */
 public class Fraction extends Number {
 
-    private static final List<Fraction> known = new List<Fraction>();
+    private static final List<Fraction> pool = new List<Fraction>();
 
     private int numerator;
     private int denominator;
@@ -23,6 +23,8 @@ public class Fraction extends Number {
             this.numerator /= ggT;
             this.denominator /= ggT;
         }
+
+        getKnown(this);
     }
 
     public Fraction(int numerator) {
@@ -73,14 +75,15 @@ public class Fraction extends Number {
      * @return Bekannter Bruch
      */
     private static Fraction getKnown(Fraction frac) {
-        while (known.hasNext()) {
-            Fraction f = known.next();
+        pool.reset();
+        while (pool.hasNext()) {
+            Fraction f = pool.next();
             if (frac.equals(f)) {
                 return f;
             }
         }
 
-        known.add(frac);
+        pool.add(frac);
         return frac;
     }
 
