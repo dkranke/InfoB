@@ -1,13 +1,13 @@
 package blatt6.a2;
 
-import blatt5.a2.List;
+import java.util.HashMap;
 
 /*
  * Aufgabe 1.2: Fraction
  */
 public class Fraction extends Number {
 
-    private static final List<Fraction> pool = new List<Fraction>();
+    private static final HashMap<String, Fraction> pool = new HashMap<>();
 
     private int numerator;
     private int denominator;
@@ -24,11 +24,29 @@ public class Fraction extends Number {
             this.denominator /= ggT;
         }
 
-        getKnown(this);
+        // Bestehende Referenz vorrangig nutzen
+        pool(this);
     }
 
     public Fraction(int numerator) {
         this(numerator, 1);
+        pool(this);
+    }
+
+    /**
+     * Gibt eine bekannte Referenz zurück oder fügt diese dem Pool hinzu
+     *
+     * @param fraction Ziel Bruch
+     * @return Bekannter Bruch
+     */
+    private static Fraction pool(Fraction fraction) {
+        String key = fraction.toString();
+        Fraction f = pool.get(key);
+        if (f == null) {
+            pool.put(key, fraction);
+            return fraction;
+        }
+        return f;
     }
 
     /**
@@ -48,7 +66,7 @@ public class Fraction extends Number {
         int denominator = Integer.parseInt(numbers[1]);
 
         Fraction frac = new Fraction(numerator, denominator);
-        return getKnown(frac);
+        return pool(frac);
     }
 
     // Euklidischer Algorithmus
@@ -68,41 +86,22 @@ public class Fraction extends Number {
         return a;
     }
 
-    /**
-     * Suche nach einem bekannten Bruch, oder registriere den neuen
-     *
-     * @param frac Ziel Bruch
-     * @return Bekannter Bruch
-     */
-    private static Fraction getKnown(Fraction frac) {
-        pool.reset();
-        while (pool.hasNext()) {
-            Fraction f = pool.next();
-            if (frac.equals(f)) {
-                return f;
-            }
-        }
-
-        pool.add(frac);
-        return frac;
-    }
-
     public Fraction multiply(int factor) {
-        return getKnown(new Fraction(numerator * factor, denominator));
+        return pool(new Fraction(numerator * factor, denominator));
     }
 
     public Fraction multiply(Fraction factor) {
-        return getKnown(new Fraction(numerator * factor.numerator, denominator * factor.denominator));
+        return pool(new Fraction(numerator * factor.numerator, denominator * factor.denominator));
     }
 
     public Fraction divide(Fraction divisor) {
-        return getKnown(new Fraction(numerator * divisor.denominator, denominator * divisor.numerator));
+        return pool(new Fraction(numerator * divisor.denominator, denominator * divisor.numerator));
     }
 
     public Fraction multiply(Fraction... factors) {
         Fraction value = this.clone();
         for (Fraction factor : factors) {
-            value = getKnown(value.multiply(factor));
+            value = pool(value.multiply(factor));
         }
         return value;
     }
@@ -110,11 +109,12 @@ public class Fraction extends Number {
     /**
      * Adds a fraction to another
      *
-     * @param addend Another fraction
+     * @param fraction Another fraction
      * @return The calculated fraction
      */
-    public Fraction add(Fraction addend) {
-        return getKnown(new Fraction(numerator * addend.denominator + denominator * addend.numerator, denominator * addend.denominator));
+    public Fraction add(Fraction fraction) {
+        Fraction f = new Fraction(numerator * fraction.denominator + denominator * fraction.numerator, denominator * fraction.denominator);
+        return pool(f);
     }
 
     // Überladung von equals um Objekte vergleichen zu können
@@ -166,6 +166,7 @@ public class Fraction extends Number {
      * @return The calculated fraction
      */
     public Fraction substract(Fraction subtrahend) {
-        return getKnown(new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator));
+        Fraction f = new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator);
+        return pool(f);
     }
 }
