@@ -40,6 +40,11 @@ public class ListTest {
             System.out.println(" - " + test.toString(list2.next()));
         }
 
+        test.label("Iterieren (mit Iterator)");
+        ListIterator<String> iter = list1.iterator();
+        while (iter.hasNext()) {
+            System.out.println(" - " + test.toString(iter.next()));
+        }
         test.printTotal();
     }
 }

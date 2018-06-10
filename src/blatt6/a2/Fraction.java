@@ -25,28 +25,11 @@ public class Fraction extends Number {
         }
 
         // Bestehende Referenz vorrangig nutzen
-        pool(this);
+        pool.putIfAbsent(toString(), this);
     }
 
     public Fraction(int numerator) {
         this(numerator, 1);
-        pool(this);
-    }
-
-    /**
-     * Gibt eine bekannte Referenz zurück oder fügt diese dem Pool hinzu
-     *
-     * @param fraction Ziel Bruch
-     * @return Bekannter Bruch
-     */
-    private static Fraction pool(Fraction fraction) {
-        String key = fraction.toString();
-        Fraction f = pool.get(key);
-        if (f == null) {
-            pool.put(key, fraction);
-            return fraction;
-        }
-        return f;
     }
 
     /**
@@ -66,7 +49,7 @@ public class Fraction extends Number {
         int denominator = Integer.parseInt(numbers[1]);
 
         Fraction frac = new Fraction(numerator, denominator);
-        return pool(frac);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 
     // Euklidischer Algorithmus
@@ -87,21 +70,24 @@ public class Fraction extends Number {
     }
 
     public Fraction multiply(int factor) {
-        return pool(new Fraction(numerator * factor, denominator));
+        Fraction frac = new Fraction(numerator * factor, denominator);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 
     public Fraction multiply(Fraction factor) {
-        return pool(new Fraction(numerator * factor.numerator, denominator * factor.denominator));
+        Fraction frac = new Fraction(numerator * factor.numerator, denominator * factor.denominator);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 
     public Fraction divide(Fraction divisor) {
-        return pool(new Fraction(numerator * divisor.denominator, denominator * divisor.numerator));
+        Fraction frac = new Fraction(numerator * divisor.denominator, denominator * divisor.numerator);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 
     public Fraction multiply(Fraction... factors) {
         Fraction value = this.clone();
         for (Fraction factor : factors) {
-            value = pool(value.multiply(factor));
+            value = value.multiply(factor);
         }
         return value;
     }
@@ -113,8 +99,8 @@ public class Fraction extends Number {
      * @return The calculated fraction
      */
     public Fraction add(Fraction fraction) {
-        Fraction f = new Fraction(numerator * fraction.denominator + denominator * fraction.numerator, denominator * fraction.denominator);
-        return pool(f);
+        Fraction frac = new Fraction(numerator * fraction.denominator + denominator * fraction.numerator, denominator * fraction.denominator);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 
     // Überladung von equals um Objekte vergleichen zu können
@@ -166,7 +152,7 @@ public class Fraction extends Number {
      * @return The calculated fraction
      */
     public Fraction substract(Fraction subtrahend) {
-        Fraction f = new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator);
-        return pool(f);
+        Fraction frac = new Fraction(numerator * subtrahend.denominator - denominator * subtrahend.numerator, denominator * subtrahend.denominator);
+        return pool.getOrDefault(frac.toString(), frac);
     }
 }

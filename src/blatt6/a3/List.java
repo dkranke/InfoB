@@ -2,8 +2,6 @@ package blatt6.a3;
 
 import blatt5.a2.Entry;
 
-import java.util.Iterator;
-
 /**
  * Klonbare (shallow-copy) typensichere Liste mit Iterator-Support :-)
  * Endlich eine (fast) normale Liste.
@@ -235,7 +233,7 @@ public class List<T> implements Cloneable, Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public ListIterator<T> iterator() {
         return new ListIterator<T>(this);
     }
 }

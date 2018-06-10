@@ -1,3 +1,4 @@
+
 package blatt6.a1;
 
 import java.io.IOException;

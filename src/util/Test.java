@@ -139,6 +139,36 @@ public class Test {
         return !equal;
     }
 
+    public boolean equals(Object a, Object b) {
+        boolean equal = a.equals(b);
+
+        if (to.enableOutput()) {
+            if (equal) {
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "==", to.toString(b.toString()), to.stringPassed());
+            } else {
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "==", to.toString(b.toString()), to.stringFailed(0));
+            }
+        }
+
+        total &= equal;
+        return equal;
+    }
+
+    public boolean unequals(Object a, Object b) {
+        boolean equal = a.equals(b);
+
+        if (to.enableOutput()) {
+            if (!equal) {
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "!=", to.toString(b.toString()), to.stringPassed());
+            } else {
+                System.out.printf(labeler ? to.labelStringFormat() : to.stringFormat(), to.toString(a.toString()), "!=", to.toString(b.toString()), to.stringFailed(0));
+            }
+        }
+
+        total &= !equal;
+        return !equal;
+    }
+
     public long speedTestMs(Runnable test) {
         long time = -System.currentTimeMillis();
         test.run();
@@ -155,6 +185,16 @@ public class Test {
         return average;
     }
 
+    public <T> double speedTestMs(Consumer<T> test, T[] parameter) {
+        double average = 0;
+        for (T param : parameter) {
+            Runnable runnable = () -> test.accept(param);
+            average += speedTestMs(runnable);
+        }
+        average /= (double) parameter.length;
+        return average;
+    }
+
     public long speedTestNs(Runnable test) {
         long time = -System.nanoTime();
         test.run();
@@ -168,6 +208,16 @@ public class Test {
             average += speedTestNs(test);
         }
         average /= (double) count;
+        return average;
+    }
+
+    public <T> double speedTestNs(Consumer<T> test, T[] parameter) {
+        double average = 0;
+        for (T param : parameter) {
+            Runnable runnable = () -> test.accept(param);
+            average += speedTestNs(runnable);
+        }
+        average /= (double) parameter.length;
         return average;
     }
 

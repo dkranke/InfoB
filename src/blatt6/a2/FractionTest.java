@@ -43,9 +43,4 @@ public class FractionTest {
     private static void print() {
         System.out.println(out);
     }
-
-
-
-
-
 }
