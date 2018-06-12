@@ -1,0 +1,10 @@
+Der Test entspricht den Erwartungen, da:
+
+                     |    Add   |  Remove  | Contains |
+ArrayList            | O(1)     |  O(n)    | O(1)     |
+LinkedList           | O(1)     |  O(1)    | O(n)     |
+HashSet              | O(1)     |  O(1)    | O(1)     |
+
+ArrayList ist bei Add schneller, da eine Art Cache angelegt wird.
+HashList ist bei Contains schneller, da kleinere Listen durchsucht werden müssen.
+HashList ist bei Remove schneller, da kleinere Listen durchsucht werden müssen.
