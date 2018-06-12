@@ -1,22 +1,24 @@
 package blatt7.a4;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class PersistantArray {
 
     Integer[] array;
     String name;
 
-    public PersistantArray(String name) throws IOException, ClassNotFoundException {
+    public PersistantArray(String name) throws IOException {
         this.name = name;
         if (!load()) {
             throw new IOException("Wrong object-type");
         }
     }
 
-    public PersistantArray(String name, Integer[] array) {
+    public PersistantArray(String name, Integer[] array) throws IOException {
         this.array = array;
         this.name = name;
+        save();
     }
 
     public int length() {
@@ -44,7 +46,7 @@ public class PersistantArray {
         }
     }
 
-    public void save() throws IOException {
+    private void save() throws IOException {
         File path = new File(name + ".IntArr");
         if (path.exists()) {
             path.delete();
@@ -54,15 +56,32 @@ public class PersistantArray {
         BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(path));
         ObjectOutput out = new ObjectOutputStream(os);
         out.writeObject(array);
+        out.close();
     }
 
-    public boolean load() throws ClassNotFoundException, IOException {
+    private boolean load() throws IOException {
         File path = new File(name + ".IntArr");
+        if (!path.exists()) {
+            throw new IOException("File not found");
+        }
 
         BufferedInputStream is = new BufferedInputStream(new FileInputStream(path));
         ObjectInput in = new ObjectInputStream(is);
-        Object obj = in.readObject();
+        try {
+            Object obj = in.readObject();
+            if (obj instanceof Integer[]) {
+                array = (Integer[]) obj;
+            }
+            in.close();
+            return true;
+        } catch (ClassNotFoundException e) {
+            in.close();
+            return false;
+        }
+    }
 
-        return obj instanceof Integer[];
+    @Override
+    public String toString() {
+        return "PersistantArray" + Arrays.toString(array);
     }
 }
