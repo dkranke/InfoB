@@ -27,7 +27,7 @@ public class FileVisitable implements Visitable<File> {
                     FileVisitor fv = (FileVisitor) v;
                     for (File file : root.listFiles()) {
                         fv.visit(file);
-                        if (file.isDirectory()) {
+                        if (recursive && file.isDirectory()) {
                             fv.enterFolder();
                             FileVisitable fileVisitable = new FileVisitable(file, recursive);
                             fileVisitable.accept(fv);
@@ -37,7 +37,7 @@ public class FileVisitable implements Visitable<File> {
                 } else {
                     for (File file : root.listFiles()) {
                         v.visit(file);
-                        if (file.isDirectory()) {
+                        if (recursive && file.isDirectory()) {
                             FileVisitable fileVisitable = new FileVisitable(file, recursive);
                             fileVisitable.accept(v);
                         }

@@ -5,7 +5,7 @@ import util.Test;
 
 import java.util.Random;
 
-public class HashListTest {
+public class HashSetTest {
 
     private static Random r = new Random();
 
@@ -13,16 +13,16 @@ public class HashListTest {
         Test test = new Test();
 
         List<String> list = new List<String>();
-        HashList<String> hashList = new HashList<String>(5);
+        HashSet<String> hashSet = new HashSet<String>(5);
 
         test.label("Insert");
-        String tmp = hashList.toString();
-        hashList.insert("0");
+        String tmp = hashSet.toString();
+        hashSet.insert("0");
 
         int i = 200;
         while (i > 0) {
             String key = keygen();
-            if (hashList.insert(key)) {
+            if (hashSet.insert(key)) {
                 list.add(key);
                 i--;
             }
@@ -33,16 +33,16 @@ public class HashListTest {
         }
 
         test.label("Contains");
-        System.out.println(" - Contains \"0\" (true): " + hashList.contains("0"));
-        test.addTotal(hashList.contains("0"));
-        System.out.println(" - Contains \"1\" (false): " + hashList.contains("1"));
-        test.addTotal(!hashList.contains("1"));
+        System.out.println(" - Contains \"0\" (true): " + hashSet.contains("0"));
+        test.addTotal(hashSet.contains("0"));
+        System.out.println(" - Contains \"1\" (false): " + hashSet.contains("1"));
+        test.addTotal(!hashSet.contains("1"));
 
         test.label("Remove");
-        boolean temp = hashList.contains("0");
+        boolean temp = hashSet.contains("0");
         System.out.println(" - Remove \"0\" (true): " + temp);
         test.addTotal(temp);
-        temp = hashList.contains("1");
+        temp = hashSet.contains("1");
         System.out.println(" - Remove \"1\" (false): " + temp);
         test.addTotal(temp);
 
@@ -52,12 +52,12 @@ public class HashListTest {
             keys[i] = keygen();
         }
 
-        double speed = test.compareListSpeedMs(keys, (v) -> listContains(list, v), (v) -> hashList.contains(v));
+        double speed = test.compareListSpeedMs(keys, (v) -> listContains(list, v), (v) -> hashSet.contains(v));
         if (speed > 0) {
-            System.out.printf(" - HashList is %6.3f ms faster than List%n", speed);
+            System.out.printf(" - HashSet is %6.3f ms faster than List%n", speed);
             test.addTotal(true);
         } else {
-            System.out.printf(" - List is %6.3f ms faster than HashList%n", -speed);
+            System.out.printf(" - List is %6.3f ms faster than HashSet%n", -speed);
             test.addTotal(false);
         }
     }

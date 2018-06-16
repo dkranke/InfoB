@@ -1,12 +1,14 @@
-package blatt5.a3;
+package blatt8.a3;
 
-import blatt5.a2.List;
 import util.HashFunction;
-import util.HashSet;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.security.InvalidParameterException;
 
-public class HashList<T> implements HashSet<T> {
+public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
 
     /**
      * Standard HashFunction-Methoden
@@ -23,15 +25,15 @@ public class HashList<T> implements HashSet<T> {
         }
     };
 
-    private List<T>[] map;
-    private HashFunction<T> hf;
+    private PersistantList<T>[] map;
+    private HashFunction<? super T> hf;
 
     /**
      * Konstruktor für den Pflichtparameter
      *
      * @param count Anzahl der Elemente
      */
-    public HashList(int count) {
+    public PersistantHashSet(int count) {
         this(count, null);
     }
 
@@ -41,16 +43,16 @@ public class HashList<T> implements HashSet<T> {
      * @param count Anzahl der Elemente
      * @param hf    optionale HashFunction
      */
-    public HashList(int count, HashFunction<T> hf) {
+    public PersistantHashSet(int count, HashFunction<T> hf) {
         if (count <= 0) {
             throw new InternalError(new InvalidParameterException("Count must be greater than 0."));
         } else if (hf == null) {
             hf = DEFAULT_HF;
         }
 
-        map = new List[count];
+        map = new PersistantList[count];
         for (int i = 0; i < map.length; i++) {
-            map[i] = new List<T>();
+            map[i] = new PersistantList<T>();
         }
 
         if (hf != null) {
@@ -70,7 +72,7 @@ public class HashList<T> implements HashSet<T> {
             return false;
         }
 
-        List<T> entry = map[hf.hashCode(o) % map.length];
+        PersistantList<T> entry = map[hf.hashCode(o) % map.length];
         if (entry.empty()) {
             return false;
         } else {
@@ -86,6 +88,7 @@ public class HashList<T> implements HashSet<T> {
 
     /**
      * Prüft ob mindestens eins von mehreren Elementen in der Liste vorhanden ist
+     *
      * @param elements Liste von Elementen
      * @return Ergebnis
      */
@@ -100,6 +103,7 @@ public class HashList<T> implements HashSet<T> {
 
     /**
      * Prüft ob alle Elemente in der Liste vorhanden sind
+     *
      * @param elements Liste von Elementen
      * @return Ergebnis
      */
@@ -128,7 +132,8 @@ public class HashList<T> implements HashSet<T> {
     }
 
     /**
-     * Fügt eine Liste von Elementen der HashList hinzu
+     * Fügt eine Liste von Elementen der HashSet hinzu
+     *
      * @param elements Liste von Elementen
      */
     public void insert(T... elements) {
@@ -152,7 +157,8 @@ public class HashList<T> implements HashSet<T> {
     }
 
     /**
-     * Entfernt eine Liste von Elementen aus der HashList
+     * Entfernt eine Liste von Elementen aus der HashSet
+     *
      * @param elements Liste von Elementen
      */
     public void delete(T... elements) {
@@ -168,5 +174,32 @@ public class HashList<T> implements HashSet<T> {
             list += ", " + i + ": " + map[i];
         }
         return this.getClass().getSimpleName() + '{' + list.substring(2) + '}';
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        // Standard Serialisierungskram
+        out.defaultWriteObject();
+
+        // Anzahl der Listen
+        out.writeInt(map.length);
+
+        // Die Listen speichern
+        for (int i = 0; i < map.length; i++) {
+            out.writeObject(map[i]);
+        }
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        // Standard Serialisierungskram
+        in.defaultReadObject();
+
+        // Lese die Anzahl der Listen
+        int size = in.readInt();
+
+        // Die Listen laden
+        map = new PersistantList[size];
+        for (int i = 0; i < size; i++) {
+            map[i] = (PersistantList<T>) in.readObject();
+        }
     }
 }
