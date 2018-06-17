@@ -1,13 +1,13 @@
 package blatt8.a4;
 
 import blatt7.a3.FileVisitable;
-import blatt7.a3.FileVisitor;
+import util.Visitor;
 
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Search implements FileVisitor {
+public class Search implements Visitor<File> {
     private static boolean showSubDirs = false;
     private static String path;
 
@@ -91,14 +91,6 @@ public class Search implements FileVisitor {
         }
 
         return true;
-    }
-
-    @Override
-    public void enterFolder() {
-    }
-
-    @Override
-    public void leaveFolder() {
     }
 
     @Override
