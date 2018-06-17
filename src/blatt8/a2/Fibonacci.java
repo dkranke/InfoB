@@ -63,36 +63,32 @@ public class Fibonacci {
 
     private static HashMap<Integer, Long> load() {
         File path = new File("Fibonacci.HashMap");
-        HashMap<Integer, Long> map = null;
-        if (!path.exists()) {
-            map = new HashMap<Integer, Long>();
-            map.put(0, 0L);
-            map.put(1, 1L);
+        HashMap<Integer, Long> map = new HashMap<Integer, Long>();
+        map.put(0, 0L);
+        map.put(1, 1L);
+
+        if (path.exists()) {
+            try {
+                BufferedInputStream is = new BufferedInputStream(new FileInputStream(path));
+                ObjectInput in = new ObjectInputStream(is);
+                Object obj = in.readObject();
+                if (obj instanceof HashMap) {
+                    map = (HashMap<Integer, Long>) obj;
+                }
+                in.close();
+            } catch (Exception e) {
+                System.err.println("Error while loading Hashmap:");
+                e.printStackTrace();
+            }
         }
 
-        try {
-            BufferedInputStream is = new BufferedInputStream(new FileInputStream(path));
-            ObjectInput in = new ObjectInputStream(is);
-            Object obj = in.readObject();
-            if (obj instanceof HashMap) {
-                map = (HashMap<Integer, Long>) obj;
-            }
-            in.close();
-        } catch (Exception e) {
-            map = new HashMap<Integer, Long>();
-            map.put(0, 0L);
-            map.put(1, 1L);
-        }
         return map;
     }
 
     private static void save() {
         File path = new File("Fibonacci.HashMap");
         if (path.exists()) {
-            File backup = new File("Fibonacci.HashMap.old");
-            backup.delete();
-            path.renameTo(backup);
-            //path.delete();
+            path.delete();
         }
 
         try {

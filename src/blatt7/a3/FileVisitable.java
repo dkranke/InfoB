@@ -29,7 +29,7 @@ public class FileVisitable implements Visitable<File> {
                         fv.visit(file);
                         if (recursive && file.isDirectory()) {
                             fv.enterFolder();
-                            FileVisitable fileVisitable = new FileVisitable(file, recursive);
+                            FileVisitable fileVisitable = new FileVisitable(file, true);
                             fileVisitable.accept(fv);
                             fv.leaveFolder();
                         }
@@ -38,7 +38,7 @@ public class FileVisitable implements Visitable<File> {
                     for (File file : root.listFiles()) {
                         v.visit(file);
                         if (recursive && file.isDirectory()) {
-                            FileVisitable fileVisitable = new FileVisitable(file, recursive);
+                            FileVisitable fileVisitable = new FileVisitable(file, true);
                             fileVisitable.accept(v);
                         }
                     }

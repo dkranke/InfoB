@@ -23,10 +23,13 @@ public class SearchLines extends Reader {
             return;
         }
 
+        // TODO Pattern
+
         SearchLines sl = new SearchLines(System.in, "");
         String line = null;
         while ((line = sl.readLine()) != null) {
             if (sl.getAmountOfMatches() > 0) {
+                //System.out.println("Zeile " + sl.getLineNumber() + ": " + line);
                 System.out.printf("Zeile %d: %s%n", sl.getLineNumber(), line);
             }
         }
@@ -36,6 +39,7 @@ public class SearchLines extends Reader {
     public int read(char[] cbuf, int off, int len) throws IOException {
         byte[] buf = new byte[len];
         int r = in.read(buf, off, len);
+
         String s = new String(buf);
         cbuf = s.toCharArray();
         return r;

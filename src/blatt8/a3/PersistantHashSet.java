@@ -123,7 +123,7 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
      */
     @Override
     public boolean insert(T o) {
-        if (!contains(o)) {
+        if (o != null && !contains(o)) {
             map[o.hashCode() % map.length].add(o);
             return true;
         } else {
@@ -176,6 +176,7 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         return this.getClass().getSimpleName() + '{' + list.substring(2) + '}';
     }
 
+    // TODO opt
     private void writeObject(ObjectOutputStream out) throws IOException {
         // Standard Serialisierungskram
         out.defaultWriteObject();
@@ -185,10 +186,15 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
 
         // Die Listen speichern
         for (int i = 0; i < map.length; i++) {
-            out.writeObject(map[i]);
+            if (map[i].count() > 0) {
+                out.writeObject(map[i]);
+            } else {
+                out.writeObject(null);
+            }
         }
     }
 
+    // TODO opt
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         // Standard Serialisierungskram
         in.defaultReadObject();
@@ -200,6 +206,9 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         map = new PersistantList[size];
         for (int i = 0; i < size; i++) {
             map[i] = (PersistantList<T>) in.readObject();
+            if (map[i] == null) {
+                map[i] = new PersistantList<T>();
+            }
         }
     }
 }

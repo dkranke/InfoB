@@ -2,7 +2,7 @@ package blatt7.a3;
 
 import java.io.File;
 
-public class Dir implements FileVisitor<File> {
+public class Dir implements FileVisitor {
     private static boolean showSubDirs = false;
     private static String path;
 
