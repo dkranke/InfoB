@@ -77,7 +77,7 @@ public class Search implements Visitor<File> {
                 System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
                 return false;
             }
-        } else {
+        } else if (args.length > 4) {
             System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
             return false;
         }

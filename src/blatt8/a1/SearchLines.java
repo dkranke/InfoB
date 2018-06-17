@@ -10,7 +10,8 @@ public class SearchLines extends Reader {
 
     private InputStream in;
     private Pattern pattern;
-    private int line = -1, matches;
+    private int lineIndex = -1;
+    private String line = "";
 
     public SearchLines(InputStream in, String regex) {
         this.in = in;
@@ -27,7 +28,7 @@ public class SearchLines extends Reader {
         String line = null;
         while ((line = sl.readLine()) != null) {
             if (sl.getAmountOfMatches() > 0) {
-                //System.out.println("Zeile " + sl.getLineNumber() + ": " + line);
+                //System.out.println("Zeile " + sl.getLineNumber() + ": " + lineIndex);
                 System.out.printf("Zeile %d: %s%n", sl.getLineNumber(), line);
             }
         }
@@ -56,9 +57,9 @@ public class SearchLines extends Reader {
         }
 
         if (str.length() > 0) {
-            findMatches(str);
+            line = str;
 
-            line++;
+            lineIndex++;
             return str;
         } else {
             return null;
@@ -66,19 +67,16 @@ public class SearchLines extends Reader {
     }
 
     public int getLineNumber() {
-        return line;
+        return lineIndex;
     }
 
     public int getAmountOfMatches() {
-        return matches;
-    }
+        Matcher m = pattern.matcher(line);
 
-    private void findMatches(String str) {
-        Matcher m = pattern.matcher(str);
-
-        matches = 0;
+        int matches = 0;
         while (m.find()) {
             matches++;
         }
+        return matches;
     }
 }

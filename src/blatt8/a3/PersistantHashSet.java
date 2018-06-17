@@ -10,21 +10,6 @@ import java.security.InvalidParameterException;
 
 public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
 
-    /**
-     * Standard HashFunction-Methoden
-     */
-    private static final HashFunction DEFAULT_HF = new HashFunction() {
-        @Override
-        public boolean equals(Object o1, Object o2) {
-            return o1.equals(o2);
-        }
-
-        @Override
-        public int hashCode(Object o) {
-            return o.hashCode();
-        }
-    };
-
     private PersistantList<T>[] map;
     private HashFunction<? super T> hf;
 
@@ -47,7 +32,7 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         if (count <= 0) {
             throw new InternalError(new InvalidParameterException("Count must be greater than 0."));
         } else if (hf == null) {
-            hf = DEFAULT_HF;
+            hf = Default_HF.INSTANCE;
         }
 
         map = new PersistantList[count];
@@ -58,7 +43,7 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         if (hf != null) {
             this.hf = hf;
         } else {
-            this.hf = DEFAULT_HF;
+            this.hf = Default_HF.INSTANCE;
         }
     }
 
