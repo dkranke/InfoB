@@ -176,7 +176,6 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         return this.getClass().getSimpleName() + '{' + list.substring(2) + '}';
     }
 
-    // TODO opt
     private void writeObject(ObjectOutputStream out) throws IOException {
         // Standard Serialisierungskram
         out.defaultWriteObject();
@@ -194,7 +193,6 @@ public class PersistantHashSet<T> implements util.HashSet<T>, Serializable {
         }
     }
 
-    // TODO opt
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         // Standard Serialisierungskram
         in.defaultReadObject();

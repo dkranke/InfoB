@@ -23,9 +23,7 @@ public class SearchLines extends Reader {
             return;
         }
 
-        // TODO Pattern
-
-        SearchLines sl = new SearchLines(System.in, "");
+        SearchLines sl = new SearchLines(System.in, args[1]);
         String line = null;
         while ((line = sl.readLine()) != null) {
             if (sl.getAmountOfMatches() > 0) {
