@@ -24,11 +24,10 @@ public class SearchLines extends Reader {
             return;
         }
 
-        SearchLines sl = new SearchLines(System.in, args[1]);
+        SearchLines sl = new SearchLines(System.in, args[0]);
         String line = null;
         while ((line = sl.readLine()) != null) {
             if (sl.getAmountOfMatches() > 0) {
-                //System.out.println("Zeile " + sl.getLineNumber() + ": " + lineIndex);
                 System.out.printf("Zeile %d: %s%n", sl.getLineNumber(), line);
             }
         }

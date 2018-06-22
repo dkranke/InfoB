@@ -96,6 +96,7 @@ public class Fibonacci {
             BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(path));
             ObjectOutput out = new ObjectOutputStream(os);
             out.writeObject(fibonacciHash);
+            out.flush();
             out.close();
         } catch (Exception e) {
             System.err.println("Error while saving Hashmap:");

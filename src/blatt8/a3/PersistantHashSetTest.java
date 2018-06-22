@@ -8,6 +8,7 @@ import java.io.*;
 public class PersistantHashSetTest {
 
     public static void main(String[] args) {
+        (new File("test.phs")).delete();
 
         Test test = new Test();
 
@@ -49,6 +50,7 @@ public class PersistantHashSetTest {
             BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(file));
             ObjectOutput out = new ObjectOutputStream(os);
             out.writeObject(o);
+            out.flush();
             out.close();
             return true;
         } catch (Exception e) {
