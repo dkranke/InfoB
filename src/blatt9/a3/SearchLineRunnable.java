@@ -1,5 +1,7 @@
 package blatt9.a3;
 
+import io.SearchLineReader;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;

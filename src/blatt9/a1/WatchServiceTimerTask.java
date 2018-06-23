@@ -14,21 +14,6 @@ public class WatchServiceTimerTask extends TimerTask {
         previousSize = initSize;
     }
 
-    private static long size(File path) {
-        if (path.isDirectory()) {
-            long size = 0;
-            File[] files = path.listFiles();
-            if (files != null) {
-                for (File f : files) {
-                    size += size(f);
-                }
-            }
-            return size;
-        } else {
-            return path.length();
-        }
-    }
-
     public long getInitSize() {
         return initSize;
     }
@@ -47,6 +32,21 @@ public class WatchServiceTimerTask extends TimerTask {
         if (currentSize != previousSize) {
             System.out.printf("Size changed from %d to %d%n", previousSize, currentSize);
             previousSize = currentSize;
+        }
+    }
+
+    private static long size(File path) {
+        if (path.isDirectory()) {
+            long size = 0;
+            File[] files = path.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    size += size(f);
+                }
+            }
+            return size;
+        } else {
+            return path.length();
         }
     }
 }

@@ -31,10 +31,6 @@ public class SearchLineVisitor implements FileVisitor {
         }
 
         pool.shutdown();
-
-        while (!pool.isShutdown()) {
-            Thread.yield();
-        }
     }
 
     @Override

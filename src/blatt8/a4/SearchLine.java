@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Search implements Visitor<File> {
+public class SearchLine implements Visitor<File> {
     private static boolean showSubDirs = false;
     private static String path;
 
@@ -18,7 +18,7 @@ public class Search implements Visitor<File> {
             File root = new File(path);
             if (root.exists()) {
                 FileVisitable fv = new FileVisitable(root, showSubDirs);
-                fv.accept(new Search());
+                fv.accept(new SearchLine());
             } else {
                 System.out.println("Error: Path does not exist");
             }
@@ -43,13 +43,13 @@ public class Search implements Visitor<File> {
                 if (!args[1].equals("-p")) {
                     path = args[1];
                 } else {
-                    System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+                    System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
                     return false;
                 }
             } else if (args[0].equals("-p")) {
                 pattern = Pattern.compile(args[1]);
             } else {
-                System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+                System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
                 return false;
             }
         } else if (args.length == 3) {
@@ -58,14 +58,14 @@ public class Search implements Visitor<File> {
                 if (args[1].equals("-p")) {
                     pattern = Pattern.compile(args[2]);
                 } else {
-                    System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+                    System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
                     return false;
                 }
             } else if (args[0].equals("-p")) {
                 pattern = Pattern.compile(args[1]);
                 path = args[2];
             } else {
-                System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+                System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
                 return false;
             }
         } else if (args.length == 4) {
@@ -74,11 +74,11 @@ public class Search implements Visitor<File> {
                 pattern = Pattern.compile(args[2]);
                 path = args[3];
             } else {
-                System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+                System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
                 return false;
             }
         } else if (args.length > 4) {
-            System.out.println("Usage: java Search [-r]  [-p Pattern] [path]");
+            System.out.println("Usage: java SearchLine [-r]  [-p Pattern] [path]");
             return false;
         }
 

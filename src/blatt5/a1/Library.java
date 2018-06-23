@@ -52,7 +52,7 @@ public class Library {
     }
 
     /**
-     * Search for a library item which description contains the given string.
+     * SearchLine for a library item which description contains the given string.
      *
      * @param text string to find
      * @return a list of library items which descriptions contain the given
