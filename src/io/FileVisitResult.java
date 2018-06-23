@@ -14,7 +14,7 @@ public enum FileVisitResult {
     CONTINUE,
     /**
      * skips the visitation of directory, only has an effect when returned by
-     * {@link FileVisitor#preVisitDirectory(io.File)}
+     *
      */
     SKIP_SUBTREE,
     /**
